@@ -94,7 +94,9 @@ protected:
     // Declared in linked_streambuf.
     void set_next(streambuf_type* next);
     void close_impl(BOOST_IOS::openmode m);
+#if __has_feature(cxx_rtti)
     const std::type_info& component_type() const { return typeid(T); }
+#endif
     void* component_impl() { return component(); }
 private:
 

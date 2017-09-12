@@ -74,8 +74,10 @@ protected:
 
     // Declared in linked_streambuf.
     void close_impl(BOOST_IOS::openmode m);
+#if __has_feature(cxx_rtti)
     const std::type_info& component_type() const { return typeid(T); }
-    void* component_impl() { return component(); } 
+#endif
+    void* component_impl() { return component(); }
 #ifdef BOOST_IOSTREAMS_NO_STREAM_TEMPLATES
     public:
 #endif
